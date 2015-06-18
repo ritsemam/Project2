@@ -20,7 +20,7 @@ emissions <- aggregate(balt[c("Emissions")], list(type = balt$type, year = balt$
 png('plot3.png', width=480, height=480)
 plot3 <- ggplot(data=emissions, aes(x=year, y=Emissions, color=type)) +
   geom_line()+
-  ggtitle("Total Emissions by Type in Baltimore City")
+  ggtitle("Total Emissions (PM 2.5) by Type in Baltimore City")
 
 print(plot3)
 
