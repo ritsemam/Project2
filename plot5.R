@@ -16,7 +16,7 @@ library("ggplot2")
 
 Balt <- subset(NEI, fips == "24510")
 
-BaltMV<- subset(balt, type == "ON-ROAD")
+BaltMV<- subset(Balt, type == "ON-ROAD")
 
 
 emissions <- aggregate(BaltMV[c("Emissions")], list(year = BaltMV$year), sum)
