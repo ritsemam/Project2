@@ -5,25 +5,30 @@
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
+#install and load ggplot package
+
 install.packages("ggplot2")
 library("ggplot2")
 
-#Aggregate data by emissions
-balt <- subset(NEI, fips == "24510")
-MV <- 
+#Aggregate data by Coal consumption
+#Subset Baltimore
 
 
-SRC.CC <- subset(SRC, SRC$EI.Sector %in% CC, select=SCC)
-NEI.CC <- subset(NEI, NEI$SCC %in%  SRC.CC$SCC)
-pd <- aggregate(NEI.CC[c("Emissions")], list(year = NEI.CC$year), sum)
-emissions <- aggregate(balt[c("Emissions")], list(type = balt$type, year = balt$year), sum)
+Balt <- subset(NEI, fips == "24510")
+
+BaltMV<- subset(balt, type == "ON-ROAD")
+
+
+emissions <- aggregate(BaltMV[c("Emissions")], list(year = BaltMV$year), sum)
+
 
 #plot using ggplot2
 
 png('plot5.png', width=480, height=480)
-plot3 <- ggplot(data=emissions, aes(x=year, y=Emissions, color=type)) +
+plot5 <- ggplot(emissions, aes(x=year, y=Emissions)) +
   geom_line()+
-  ggtitle("Coal Consumption in US from 1999-2008")
+  
+  ggtitle("Motor Vehicle Emissions in PM2.5 in Baltimore City, MD")
 
 print(plot5)
 
