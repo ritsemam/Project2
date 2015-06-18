@@ -10,16 +10,15 @@ SCC <- readRDS("Source_Classification_Code.rds")
 install.packages("ggplot2")
 library("ggplot2")
 
-#Aggregate data by Coal consumption
-#Subset Baltimore
 
+#Subset Baltimore
 
 Balt <- subset(NEI, fips == "24510")
 
 BaltMV<- subset(Balt, type == "ON-ROAD")
+#Aggregate data by Emissions (mmotor vehicle)
 
-
-emissions <- aggregate(BaltMV[c("Emissions")], list(year = BaltMV$year), sum)
+emissions <- aggregate(BaltMV[c("Emissions")], list(year = BaltMV$year) sum)
 
 
 #plot using ggplot2

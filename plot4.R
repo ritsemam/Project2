@@ -10,13 +10,14 @@ SCC <- readRDS("Source_Classification_Code.rds")
 install.packages("ggplot2")
 library("ggplot2")
 
-#Aggregate data by Coal consumption
+
 #Subset coal as source
 coal = SCC[grepl("coal", SCC$Short.Name, ignore.case = TRUE), ]
 
 #merge Coal with NEI
 Coal2 <- merge (NEI, coal, by= 'SCC')
 
+#Aggregate data by Coal consumption
 emissions <- aggregate(Coal2[c("Emissions")], list(year = Coal2$year), sum)
 
 
