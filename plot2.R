@@ -7,8 +7,6 @@ SCC <- readRDS("Source_Classification_Code.rds")
 balt <- subset(NEI, fips == "24510")
 emissions <- aggregate(balt[c("Emissions")], list(year = balt$year), sum)
 
-
-
 #plot using base plot
 
 png('plot2.png', width=480, height=480)
